@@ -20,5 +20,10 @@ public class CharacterTest {
         assertThat(character.getLevel(), is(1));
     }
 
+    @Test
+    public void checkAlive() {
+        Character character = new Character();
+        assertThat(character.isAlive(), is(true));
+    }
 
 }
