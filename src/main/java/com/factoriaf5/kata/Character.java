@@ -21,11 +21,11 @@ public class Character {
         }
     }
 
-    public void heal(Character target, float cure) {
-        if (target.isAlive()) {
-            target.health += cure;
-            if (target.health >= 1000) {
-                target.health = 1000;
+    public void heal(float cure) {
+        if (this.isAlive()) {
+            this.health += cure;
+            if (this.health >= 1000) {
+                this.health = 1000;
             }
         }
     }
