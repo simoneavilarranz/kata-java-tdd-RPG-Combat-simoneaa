@@ -13,7 +13,14 @@ public class Character {
     
     public void attack(Character target, float damage) {
         if (target != this) {
-            target.health -= damage;
+            float effectiveDamage = damage;
+            if (target.level >= this.level + 5) {
+                effectiveDamage = damage * 0.5F;
+            }
+            if (target.level <= this.level - 5) {
+                effectiveDamage = damage * 1.5F;
+            }
+            target.health -= effectiveDamage;
         }
         if (target.health <= 0) {
             target.health = 0;
