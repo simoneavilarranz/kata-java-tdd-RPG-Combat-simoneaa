@@ -106,7 +106,7 @@ public class CharacterTest {
     public void normalHeal() {
         Character target = new Character();
         target.setHealth(500);
-        target.heal(100);
+        target.heal(target, 100);
         assertThat(target.getHealth(), is(600.0F));
     }
 
@@ -114,7 +114,7 @@ public class CharacterTest {
     public void fullHeal() {
         Character target = new Character();
         target.setHealth(950);
-        target.heal(100);
+        target.heal(target, 100);
         assertThat(target.getHealth(), is(1000.0F));
     }
 
@@ -123,8 +123,34 @@ public class CharacterTest {
         Character target = new Character();
         target.setHealth(0);
         target.setAlive(false);
-        target.heal(100);
+        target.heal(target, 100);
         assertThat(target.getHealth(), is(0.0F));
         assertThat(target.isAlive(), is(false));
     }
+
+    @Test
+    public void healAlly() {
+        Character character = new Character();
+        Character target = new Character();
+        Faction alliance = new Faction("Alliance");
+        character.joinFaction(alliance);
+        target.joinFaction(alliance);
+        target.setHealth(500);
+        character.heal(target, 100);
+        assertThat(target.getHealth(), is(600.0F));
+    }
+
+    @Test
+    public void healEnemy() {
+        Character character = new Character();
+        Character target = new Character();
+        Faction alliance = new Faction("Alliance");
+        Faction horde = new Faction("Horde");
+        character.joinFaction(alliance);
+        target.joinFaction(horde);
+        target.setHealth(500);
+        character.heal(target, 100);
+        assertThat(target.getHealth(), is(500.0F));
+    }
+
 }
