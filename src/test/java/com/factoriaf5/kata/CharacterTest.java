@@ -2,7 +2,6 @@ package com.factoriaf5.kata;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -100,6 +99,24 @@ public class CharacterTest {
         Character target = new Character();
         character.attack(target, 100, 21);
         assertThat(target.getHealth(), is(1000.0F));
+    }
+
+    @Test
+    public void attackProp() {
+        Prop tree = new Prop(500);
+        Character character = new Character();
+        character.attack(tree, 100, 0);
+        assertThat(tree.getHealth(), is(400.0F));
+        assertThat(tree.isDestroyed(), is(false));
+    }
+
+    @Test
+    public void destroyProp() {
+        Prop tree = new Prop(100);
+        Character character = new Character();
+        character.attack(tree, 100, 0);
+        assertThat(tree.getHealth(), is(0.0F));
+        assertThat(tree.isDestroyed(), is(true));
     }
 
     @Test

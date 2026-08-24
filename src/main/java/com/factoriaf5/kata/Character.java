@@ -3,7 +3,8 @@ package com.factoriaf5.kata;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character {
+public class Character implements Damageable {
+
     private float health;
     private int level;
     private boolean alive;
@@ -18,20 +19,26 @@ public class Character {
         this.alive = true;
     }
     
-    public void attack(Character target, float damage, float distance) {
-        if (target != this && distance <= this.range && !this.isAlly(target)) {
+    public void attack(Damageable target, float damage, float distance) {
+        if (target != this && distance <= this.range) {
             float effectiveDamage = damage;
-            if (target.level >= this.level + 5) {
+            if (target instanceof Character) {
+                Character characterTarget = (Character) target;
+                if (characterTarget.level >= this.level + 5) {
                 effectiveDamage = damage * 0.5F;
+                }
+                if (characterTarget.level <= this.level - 5) {
+                    effectiveDamage = damage * 1.5F;
+                } 
             }
-            if (target.level <= this.level - 5) {
-                effectiveDamage = damage * 1.5F;
-            }
-            target.health -= effectiveDamage;
+            target.setHealth(target.getHealth() - effectiveDamage);
         }
-        if (target.health <= 0) {
-            target.health = 0;
-            target.alive = false;
+        if (target instanceof Character) {
+            Character characterTarget = (Character) target;
+            if (characterTarget.getHealth() <= 0) {
+                characterTarget.setHealth(0);
+                characterTarget.setAlive(false);
+            }
         }
     }
 
@@ -101,4 +108,8 @@ public class Character {
         this.distance = distance;
     }
 
+    @Override
+    public boolean isDestroyed() {
+        return !isAlive();
+    }
 }
