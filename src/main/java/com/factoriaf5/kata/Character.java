@@ -4,6 +4,8 @@ public class Character {
     private float health;
     private int level;
     private boolean alive;
+    protected float range;
+    private float distance;
 
     public Character() {
         this.health = 1000;
@@ -11,8 +13,8 @@ public class Character {
         this.alive = true;
     }
     
-    public void attack(Character target, float damage) {
-        if (target != this) {
+    public void attack(Character target, float damage, float distance) {
+        if (target != this && distance <= this.range) {
             float effectiveDamage = damage;
             if (target.level >= this.level + 5) {
                 effectiveDamage = damage * 0.5F;
@@ -49,6 +51,14 @@ public class Character {
         return alive;
     }
 
+    public float getRange() {
+        return range;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
     public void setHealth(float health) {
         this.health = health;
     }
@@ -59,6 +69,14 @@ public class Character {
 
     public void setAlive(boolean alive) {
         this.alive = alive;
+    }
+
+    public void setRange(float range) {
+        this.range = range;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
     }
 
 }

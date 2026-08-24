@@ -30,7 +30,7 @@ public class CharacterTest {
     public void basicAttack() {
         Character character = new Character();
         Character target = new Character();
-        character.attack(target, 100);
+        character.attack(target, 100, 0);
         assertThat(target.getHealth(), is(900.0F));
     }
 
@@ -38,7 +38,7 @@ public class CharacterTest {
     public void deathDamage() {
         Character character = new Character();
         Character target = new Character();
-        character.attack(target, 1500);
+        character.attack(target, 1500, 0);
         assertThat(target.getHealth(), is(0.0F));
         assertThat(target.isAlive(), is(false));
     }
@@ -46,7 +46,7 @@ public class CharacterTest {
     @Test
     public void attackSelf() {
         Character character = new Character();
-        character.attack(character, 100);
+        character.attack(character, 100, 0);
         assertThat(character.getHealth(), is(1000.0F));
     }
 
@@ -56,7 +56,7 @@ public class CharacterTest {
         Character target = new Character();
         character.setLevel(6);
         target.setLevel(1);
-        character.attack(target, 100); 
+        character.attack(target, 100, 0); 
         assertThat(target.getHealth(), is(850.0F));
     }
 
@@ -66,8 +66,40 @@ public class CharacterTest {
         Character target = new Character();
         character.setLevel(1);
         target.setLevel(6);
-        character.attack(target, 100); 
+        character.attack(target, 100, 0); 
         assertThat(target.getHealth(), is(950.0F));
+    }
+
+    @Test
+    public void succesfulMeleeAttack() {
+        Character character = new MeleeFighter();
+        Character target = new Character();
+        character.attack(target, 100, 0);
+        assertThat(target.getHealth(), is(900.0F));
+    }
+
+    @Test
+    public void failedMeleeAttack() {
+        Character character = new MeleeFighter();
+        Character target = new Character();
+        character.attack(target, 100, 3);
+        assertThat(target.getHealth(), is(1000.0F));
+    }
+
+    @Test
+    public void succesfulRangeAttack() {
+        Character character = new RangedFighter();
+        Character target = new Character();
+        character.attack(target, 100, 19);
+        assertThat(target.getHealth(), is(900.0F));
+    }
+
+    @Test
+    public void failedRangeAttack() {
+        Character character = new RangedFighter();
+        Character target = new Character();
+        character.attack(target, 100, 21);
+        assertThat(target.getHealth(), is(1000.0F));
     }
 
     @Test
