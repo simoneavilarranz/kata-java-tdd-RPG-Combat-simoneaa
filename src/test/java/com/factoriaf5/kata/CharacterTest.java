@@ -42,4 +42,33 @@ public class CharacterTest {
         assertThat(target.getHealth(), is(0.0F));
         assertThat(target.isAlive(), is(false));
     }
+
+    @Test
+    public void normalHeal() {
+        Character character = new Character();
+        Character target = new Character();
+        target.setHealth(500);
+        character.heal(target, 100);
+        assertThat(target.getHealth(), is(600.0F));
+    }
+
+    @Test
+    public void fullHeal() {
+        Character character = new Character();
+        Character target = new Character();
+        target.setHealth(950);
+        character.heal(target, 100);
+        assertThat(target.getHealth(), is(1000.0F));
+    }
+
+    @Test
+    public void failedHeal() {
+        Character character = new Character();
+        Character target = new Character();
+        target.setHealth(0);
+        target.setAlive(false);
+        character.heal(target, 100);
+        assertThat(target.getHealth(), is(0.0F));
+        assertThat(target.isAlive(), is(false));
+    }
 }

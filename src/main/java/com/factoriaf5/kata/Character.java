@@ -19,6 +19,15 @@ public class Character {
         }
     }
 
+    public void heal(Character target, float cure) {
+        if (target.isAlive()) {
+            target.health += cure;
+            if (target.health >= 1000) {
+                target.health = 1000;
+            }
+        }
+    }
+
     public float getHealth() {
         return health;
     }
@@ -29,6 +38,18 @@ public class Character {
 
     public boolean isAlive() {
         return alive;
+    }
+
+    public void setHealth(float health) {
+        this.health = health;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 
 }
