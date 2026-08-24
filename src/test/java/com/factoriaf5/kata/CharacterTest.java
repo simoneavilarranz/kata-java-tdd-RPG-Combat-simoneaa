@@ -1,14 +1,16 @@
 package com.factoriaf5.kata;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 public class CharacterTest {
-    
-    @Test
-    public void ExampleTest() {
-        assertEquals(2, 2);
+
+    @Test public void checkHealth() {
+        Character character = new Character();
+        assertThat(character.getHealth(), is(1000.0F));
     }
 
 }
