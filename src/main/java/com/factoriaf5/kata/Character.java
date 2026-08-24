@@ -10,6 +10,10 @@ public class Character {
         this.level = 1;
         this.alive = true;
     }
+    
+    public void attack(Character target, float damage) {
+        target.health -= damage;
+    }
 
     public float getHealth() {
         return health;

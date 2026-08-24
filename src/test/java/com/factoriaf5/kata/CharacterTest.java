@@ -26,4 +26,12 @@ public class CharacterTest {
         assertThat(character.isAlive(), is(true));
     }
 
+    @Test
+    public void basicAttack() {
+        Character character = new Character();
+        Character target = new Character();
+        character.attack(target, 100);
+        assertThat(target.getHealth(), is(900.0F));
+    }
+
 }
