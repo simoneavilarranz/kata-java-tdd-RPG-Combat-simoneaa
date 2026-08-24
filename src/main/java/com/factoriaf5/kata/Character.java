@@ -12,7 +12,9 @@ public class Character {
     }
     
     public void attack(Character target, float damage) {
-        target.health -= damage;
+        if (target != this) {
+            target.health -= damage;
+        }
         if (target.health <= 0) {
             target.health = 0;
             target.alive = false;
