@@ -33,8 +33,6 @@ Creación de programa que utiliza diferentes mecánicas de videojuegos RPG, divi
     * Estas no pueden ser curadas   ni hacer Damage.  
     * No pertenecen a Factions.
     * Cuando su Health se reduce a 0, son destruidas.
-   
----
 
 ## Requisitos y dependencias
 
@@ -42,17 +40,16 @@ Creación de programa que utiliza diferentes mecánicas de videojuegos RPG, divi
 - Maven
 - JUnit y Hamcrest
 
----
-
 ## Instalación
 
 - Clonar repositorio
 - ```mvn compile```
-
----
 
 ## Testing
 
 - ```mvn test```
 - Abrir Target/Site/Jacoco/Index.html (*Open with Live Server*)
 <img src="src/assets/test.jpg">
+
+## Autora
+👩‍💻 Simone Ávila Arranz - Factoría F5 Bootcamp P5
