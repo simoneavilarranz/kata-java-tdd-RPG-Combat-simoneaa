@@ -1,7 +1,10 @@
-package com.factoriaf5.kata;
+package com.factoriaf5.kata.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.factoriaf5.kata.interfaces.Damageable;
+import com.factoriaf5.kata.service.CombatService;
 
 public class Character implements Damageable {
 
@@ -20,26 +23,7 @@ public class Character implements Damageable {
     }
     
     public void attack(Damageable target, float damage, float distance) {
-        if (target != this && distance <= this.range) {
-            float effectiveDamage = damage;
-            if (target instanceof Character) {
-                Character characterTarget = (Character) target;
-                if (characterTarget.level >= this.level + 5) {
-                effectiveDamage = damage * 0.5F;
-                }
-                if (characterTarget.level <= this.level - 5) {
-                    effectiveDamage = damage * 1.5F;
-                } 
-            }
-            target.setHealth(target.getHealth() - effectiveDamage);
-        }
-        if (target instanceof Character) {
-            Character characterTarget = (Character) target;
-            if (characterTarget.getHealth() <= 0) {
-                characterTarget.setHealth(0);
-                characterTarget.setAlive(false);
-            }
-        }
+        CombatService.attack(this, target, damage, distance);
     }
 
     public void heal(Character target, float cure) {

@@ -5,6 +5,12 @@ import static org.hamcrest.Matchers.is;
 
 import org.junit.jupiter.api.Test;
 
+import com.factoriaf5.kata.model.Character;
+import com.factoriaf5.kata.model.Faction;
+import com.factoriaf5.kata.model.MeleeFighter;
+import com.factoriaf5.kata.model.Prop;
+import com.factoriaf5.kata.model.RangedFighter;
+
 public class CharacterTest {
 
     @Test

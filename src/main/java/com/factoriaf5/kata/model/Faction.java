@@ -1,4 +1,4 @@
-package com.factoriaf5.kata;
+package com.factoriaf5.kata.model;
 
 public class Faction {
     public String name;

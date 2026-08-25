@@ -1,4 +1,6 @@
-package com.factoriaf5.kata;
+package com.factoriaf5.kata.model;
+
+import com.factoriaf5.kata.interfaces.Damageable;
 
 public class Prop implements Damageable {
     private float health;

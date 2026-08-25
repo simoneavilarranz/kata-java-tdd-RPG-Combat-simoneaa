@@ -1,4 +1,4 @@
-package com.factoriaf5.kata;
+package com.factoriaf5.kata.interfaces;
 
 public interface Damageable {
     float getHealth();
