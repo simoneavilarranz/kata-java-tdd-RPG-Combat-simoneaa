@@ -1,6 +1,8 @@
 
 # Kata RPG Combat
 
+## Introducción
+
 Creación de programa que utiliza diferentes mecánicas de videojuegos RPG, divididas en iteraciones que implementar y refactorizar.
 ### 1. **Personajes:**
   - Tendrán Health (iniciada en 1000).  
@@ -40,8 +42,17 @@ Creación de programa que utiliza diferentes mecánicas de videojuegos RPG, divi
 - Maven
 - JUnit y Hamcrest
 
+---
+
 ## Instalación
 
 - Clonar repositorio
 - ```mvn compile```
 
+---
+
+## Testing
+
+- ```mvn test```
+- Abrir Target/Site/Jacoco/Index.html (*Open with Live Server*)
+<img src="src/assets/test.jpg">
