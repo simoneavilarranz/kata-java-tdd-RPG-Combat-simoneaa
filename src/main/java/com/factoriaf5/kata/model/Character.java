@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.factoriaf5.kata.interfaces.Damageable;
 import com.factoriaf5.kata.service.CombatService;
+import com.factoriaf5.kata.service.HealService;
 
 public class Character implements Damageable {
 
@@ -27,12 +28,7 @@ public class Character implements Damageable {
     }
 
     public void heal(Character target, float cure) {
-        if ((target == this || this.isAlly(target)) && target.isAlive()) {
-            target.health += cure;
-            if (target.health >= 1000) {
-                target.health = 1000;
-            }
-        }
+        HealService.heal(this, target, cure);
     }
 
     public void joinFaction(Faction faction) {
