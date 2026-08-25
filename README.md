@@ -1,76 +1,45 @@
 
 # Kata RPG Combat
 
-Background This is a fun kata that has the programmer building simple combat rules, as for a role-playing game (RPG). It is implemented as a sequence of iterations. The domain doesn't include a map kills or any other character sapart from their ability to damage and heal one another.
+Creación de programa que utiliza diferentes mecánicas de videojuegos RPG, divididas en iteraciones que implementar y refactorizar.
+1. **Personajes:**
+  - Tendrán Health (iniciada en 1000).  
+  - Tendrán Level (Iniciado en 1).  
+  - Estarán Alive o Dead (True/False, iniciado en Alive).  
+2. **Ataque:**  
+  - Un personaje podrá dañar a otro, Damage es substraido de Health.  
+  - Cuando Damage supera Health, esta pasa a ser 0 y el personaje a estar Dead.  
+  - Un personaje no puede dañarse a sí mismo.  
+  - Al atacar:  
+    * Si el Target tiene 5 o más Levels que el atacante, el Damage se reduce en un 50%  
+    * Si tiene 5 o menos, aumenta en un 50%.  
+  - Los personajes tendrán un rango máximo de ataque, Target tendrá que estar dentro de ese rango para hacer Damage.  
+  - Melee fighters tienen un Range de 2 metros, Ranged fighters tienen uno de 20 metros.  
+3. **Curación:**
+  - Un personaje puede curarse a sí mismo.  
+  - No puede curarse a personajes Dead.  
+  - La curación no puede subir Health por encima de 1000.  
+4. **Facciones:**
+  - Los personajes podrán pertenecer a una o más Factions, no pertenecen a ninguna al ser creados.
+  - Pueden unirse a o abandonar una o más Factions.  
+  - Los personajes que pertenecen a la misma Faction son Allies:
+    * Los Allies no pueden atacarse entre ellos.
+    * Los Allies pueden curarse entre ellos.  
+5. **Objetos:**
+  - Los personajes pueden atacar a cosas que no sean personajes (Props).
+    * Cualquier cosa con Health puede ser objetivo.
+    * Estas no pueden ser curadas   ni hacer Damage.  
+    * No pertenecen a Factions.
+    * Cuando su Health se reduce a 0, son destruidas.
 
-## Requiered
+## Requisitos y dependencias
 
-- Minimum Java 21
+- Java 21
+- Maven
+- JUnit y Hamcrest
 
-## DevDependency
+## Instalación
 
-- JUnit
-- Hamcrest
+- Clonar repositorio
+- ```mvn compile```
 
-## Installation
-
-Just clone the Kata
-
-    
-## Instructions
-Complete each iteration before reading the next one. 2. It's recommended you perform this kata with a pairing partner and while writing tests.
-
-1. Iteration One:
-    - All Characters, when created, have:
-        * Health, starting at 1000 
-        * Level, starting at 1 
-        * May be Alive or Dead, starting Alive (Alive may be a true/false) 
-    - Characters can Deal Damage to Characters.
-        * Damage is subtracted from Health 
-        * When damage received exceeds current Health, Health becomes 0 and the character dies 
-    - A Character can Heal a Character. 
-        * Dead characters cannot be healed 
-        * Healing cannot raise health above 1000
-
-2. Iteration Two:
-    - A Character cannot Deal Damage to itself.
-    - A Character can only Heal itself. 
-    - When dealing damage:
-        * If the target is 5 or more Levels above the attacker, Damage is reduced by 50% 
-        * If the target is 5 or more levels below the attacker, Damage is increased by 50%
-
-3. Iteration Three:
-    - Characters have an attack Max Range. 
-    - Melee fighters have a range of 2 meters. 
-    - Ranged fighters have a range of 20 meters. 
-    - Characters must be in range to deal damage to a target.
-
-```
-Retrospective:
-    - Are you keeping up with the requirements? Has any iteration been a big challenge?
-    - Do you feel good about your design? Is it scalable and easily adapted to new requirements? 
-    - Is everything tested? Are you confident in your code?
-```
-
-4. Iteration Four:
-    - Characters may belong to one or more Factions.
-        * Newly created Characters belong to no Faction. 
-    - A Character may Join or Leave one or more Factions.
-    - Players belonging to the same Faction are considered Allies.
-    - Allies cannot Deal Damage to one another.
-    - Allies can Heal one another.
-
-5. Iteration Five:
-    - Characters can damage non-character things (props).
-        * Anything that has Health may be a target
-        * These things cannot be Healed and they do not Deal Damage
-        * These things do not belong to Factions; they are neutral
-        * When reduced to 0 Health, things are Destroyed
-        * As an example, you may create a Tree with 2000 Health
-
-```
-Retrospective 
-    - What problems did you encounter? 
-    - What have you learned? Any new technique or pattern? 
-    - Share your design with others, and get feedback on different approaches.
-```
